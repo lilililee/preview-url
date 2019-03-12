@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack')
 const rootPath = path.resolve(__dirname)
 module.exports = {
@@ -7,7 +8,7 @@ module.exports = {
     main: path.resolve(rootPath, "src/index.js"),
   }, 
   output: {
-      publicPath: '/',
+      publicPath: './',
       path: path.resolve(rootPath, "dist"),
       filename: 'src/[name][hash].js'
   },
@@ -72,6 +73,7 @@ module.exports = {
           filename: "index.html",
           favicon: path.resolve(rootPath, "public/favicon.ico")
       }),
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      new CleanWebpackPlugin()
   ]
 }

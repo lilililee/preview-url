@@ -205,5 +205,13 @@
         margin:0 8px;
       }
     }
+
+    .panel-qrcode {
+      .panel-content {
+        display: flex;
+       justify-content: center;
+       padding: 20px 0;
+      }
+    }
   }
 }

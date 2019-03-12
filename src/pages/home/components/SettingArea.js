@@ -1,4 +1,6 @@
 import React from 'react'
+import QRCode from 'qrcode.react'
+// var QRCode = require('qrcode.react');
 import sizeList from './sizeConfig'
 
 export default class SettingArea extends React.PureComponent {
@@ -60,14 +62,30 @@ export default class SettingArea extends React.PureComponent {
 
             <div className="diy-size">
               <div className="name">自定义：</div>
-              <input type="text" className="input-width" placeholder="宽" onChange={e => this.onChange(e, 'diyWidth')} />
+              <input
+                type="text"
+                className="input-width"
+                placeholder="宽"
+                onChange={e => this.onChange(e, 'diyWidth')}
+              />
               <span>x</span>
-              <input type="text" className="input-height" placeholder="高" onChange={e => this.onChange(e, 'diyHeight')} />
+              <input
+                type="text"
+                className="input-height"
+                placeholder="高"
+                onChange={e => this.onChange(e, 'diyHeight')}
+              />
               <span>px</span>
               <div className="btn" onClick={this.setDiySize}>
                 确定
               </div>
             </div>
+          </div>
+        </div>
+        <div className="panel panel-qrcode">
+          <div className="panel-title">扫描二维码预览</div>
+          <div className="panel-content">
+            <QRCode value={url} />,
           </div>
         </div>
       </div>
