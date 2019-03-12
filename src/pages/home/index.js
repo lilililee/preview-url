@@ -1,7 +1,7 @@
 import React from 'react'
+import Styles from './index.scss'
 import DisplayArea from './components/DisplayArea'
 import SettingArea from './components/SettingArea'
-import Styles from './index.scss'
 
 export default class Home extends React.Component {
   state = {

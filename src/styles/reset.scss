@@ -1,0 +1,114 @@
+// reset
+
+/* CSS Document */
+:global {
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  div,
+  dl,
+  dt,
+  dd,
+  ul,
+  ol,
+  li,
+  p,
+  blockquote,
+  pre,
+  hr,
+  figure,
+  table,
+  caption,
+  th,
+  td,
+  form,
+  fieldset,
+  legend,
+  input,
+  button,
+  textarea,
+  menu {
+    margin: 0;
+    padding: 0;
+  }
+  html,
+  body,
+  fieldset,
+  img,
+  iframe,
+  abbr {
+    border: 0;
+  }
+  li {
+    list-style: none;
+  }
+  textarea {
+    overflow: auto;
+    resize: none;
+  }
+  a,
+  button {
+    cursor: pointer;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  em,
+  strong,
+  b {
+    font-weight: normal;
+  }
+  a,
+  a:hover {
+    text-decoration: none;
+  }
+  body,
+  html {
+    width: 100%;
+    font-weight: normal;
+  }
+  html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family: 'Microsoft YaHei', 'Helvetica Neue', Arial, HelveticaNeue, Helvetica, 'BBAlpha Sans', sans-serif;
+  }
+  body {
+    background: #fff;
+    font-size: 0.24rem;
+    line-height: 1;
+  }
+
+  img {
+    vertical-align: top;
+    max-width: 100%;
+  }
+  input,
+  select,
+  textarea,
+  option {
+    border: 0;
+    outline: none;
+    font-family: 'Microsoft YaHei';
+  }
+  a,
+  img,
+  i,
+  input,
+  div {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
