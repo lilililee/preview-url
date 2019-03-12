@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
-/dist
+# 需上传dist文件夹到Github Pages展示
+# /dist   
 
 # local env files
 .env.local
