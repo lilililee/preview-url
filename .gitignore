@@ -9,7 +9,8 @@
 /coverage
 
 # production
-/build
+# 上传build供git pages展示
+# /build
 
 # misc
 .DS_Store
