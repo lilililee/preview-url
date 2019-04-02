@@ -1,12 +1,6 @@
 import React, { useContext } from 'react'
 import Context from '../../../store-hooks/index'
 
-// export interface displayPropsType {
-//   width: number,
-//   height: number,
-//   url: string
-// }
-
 const scale = 0.8
 
 export default props => {

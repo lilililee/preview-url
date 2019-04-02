@@ -8,7 +8,7 @@ import Context from './store-hooks/index'
 import { initState, reducers } from './store-hooks/reducers/index'
 
 
-const AppWithContext = (props: any) => {
+const AppWithContext = props => {
   const [state, dispatch] = useReducer(reducers, initState)
   return (
     <Context.Provider value={{ state, dispatch }}>
