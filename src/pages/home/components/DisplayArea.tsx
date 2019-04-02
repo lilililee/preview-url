@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import Context from '../../../index'
 
 export interface displayPropsType {
   width: number,
@@ -9,7 +10,10 @@ export interface displayPropsType {
 const scale = 0.8
 
 export default (props: displayPropsType) => {
-  const { width, height, url } = props
+  const { state: {url}, dispatch } = useContext(Context)
+  // console.log(112,ctx)
+
+  const { width, height } = props
   return (
     <div className="display-area">
       <div className="devices-container">

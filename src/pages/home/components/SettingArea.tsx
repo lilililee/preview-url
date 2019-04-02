@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import QRCode from 'qrcode.react'
 import sizeList from './sizeConfig'
+import Context from '../../../index'
+import {getUrlAction} from '../../../store-hooks/actions'
 
 export interface sizeConfigType {
   size: string,
@@ -24,7 +26,9 @@ export default (props: settingPropsType) => {
   const [inputUrl, setInputUrl] = useState(props.url)
   const [diyWidth, setDiyWidth] = useState('')
   const [diyHeight, setDiyHeight] = useState('')
-  const { width, height, url, setSize, setUrl } = props
+  const { width, height, setSize, setUrl } = props
+
+  const { state: {url}, dispatch } = useContext(Context)
 
   const setDiySize = () => {
     if (!diyWidth || +diyWidth <= 0) {
@@ -48,7 +52,7 @@ export default (props: settingPropsType) => {
               onChange={e => setInputUrl(e.target.value)}
               placeholder="请输入预览链接"
             />
-            <div className="btn" onClick={() => setUrl(inputUrl)}>
+            <div className="btn" onClick={() => dispatch(getUrlAction(inputUrl))}>
               确定
             </div>
           </div>
