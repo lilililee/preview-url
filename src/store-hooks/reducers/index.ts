@@ -1,16 +1,24 @@
 import TYPES from '../types'
 
-export const initState: object = {
-  url: 'https://weui.io/'
+export const initState = {
+  url: 'https://weui.io/',
+  size: {
+    width: 375,
+    height: 667
+  }
 }
 
 export function reducers(state, action) {
-  console.log(state)
   switch (action.type) {
     case TYPES.URL:
       return {
         ...state,
         url: action.data
+      }
+    case TYPES.SIZE:
+      return {
+        ...state,
+        size: action.data
       }
 
     default:

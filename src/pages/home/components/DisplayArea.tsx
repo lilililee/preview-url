@@ -1,19 +1,22 @@
 import React, { useContext } from 'react'
-import Context from '../../../index'
+import Context from '../../../store-hooks/index'
 
-export interface displayPropsType {
-  width: number,
-  height: number,
-  url: string
-}
+// export interface displayPropsType {
+//   width: number,
+//   height: number,
+//   url: string
+// }
 
 const scale = 0.8
 
-export default (props: displayPropsType) => {
-  const { state: {url}, dispatch } = useContext(Context)
-  // console.log(112,ctx)
+export default props => {
+  const {
+    state: {
+      url,
+      size: { width, height }
+    }
+  } = useContext(Context)
 
-  const { width, height } = props
   return (
     <div className="display-area">
       <div className="devices-container">

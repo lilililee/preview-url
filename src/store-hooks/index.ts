@@ -1,3 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default React.createContext(null)
+const ctx:any = {}
+const Context = React.createContext(ctx)
+export default Context

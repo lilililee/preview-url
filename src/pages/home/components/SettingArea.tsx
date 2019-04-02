@@ -1,34 +1,39 @@
-import React, { useState,useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import QRCode from 'qrcode.react'
 import sizeList from './sizeConfig'
-import Context from '../../../index'
-import {getUrlAction} from '../../../store-hooks/actions'
+import Context from '../../../store-hooks/index'
+import { getUrlAction, getSizeAction } from '../../../store-hooks/actions'
 
 export interface sizeConfigType {
   size: string,
   name: string
 }
 
-export interface diySizeType {
-  width: string,
-  height: string
-}
-
-export interface settingPropsType {
-  width: number,
-  height: number,
-  url: string,
-  setSize: any,
-  setUrl: any
-}
-
-export default (props: settingPropsType) => {
+export default props => {
   const [inputUrl, setInputUrl] = useState(props.url)
   const [diyWidth, setDiyWidth] = useState('')
   const [diyHeight, setDiyHeight] = useState('')
-  const { width, height, setSize, setUrl } = props
 
-  const { state: {url}, dispatch } = useContext(Context)
+  const {
+    state: {
+      url,
+      size: { width, height }
+    },
+    dispatch
+  } = useContext(Context)
+  
+  // 实现同一 url 刷新效果
+  const dispatchUpdateUrl = () => {
+    dispatch(getUrlAction(''))
+    setTimeout(() => {
+      dispatch(getUrlAction(inputUrl))
+    }, 100)
+  }
+
+  const dispatchUpdateSize = size => {
+    const [width, height] = size.split('x')
+    dispatch(getSizeAction({ width, height }))
+  }
 
   const setDiySize = () => {
     if (!diyWidth || +diyWidth <= 0) {
@@ -37,7 +42,7 @@ export default (props: settingPropsType) => {
     if (!diyHeight || +diyHeight <= 0) {
       return alert('请输入合法的高度')
     }
-    setSize(`${diyWidth}x${diyHeight}`)
+    dispatchUpdateSize(`${diyWidth}x${diyHeight}`)
   }
 
   return (
@@ -52,7 +57,7 @@ export default (props: settingPropsType) => {
               onChange={e => setInputUrl(e.target.value)}
               placeholder="请输入预览链接"
             />
-            <div className="btn" onClick={() => dispatch(getUrlAction(inputUrl))}>
+            <div className="btn" onClick={dispatchUpdateUrl}>
               确定
             </div>
           </div>
@@ -65,7 +70,7 @@ export default (props: settingPropsType) => {
             {sizeList.map((i: sizeConfigType) => (
               <div
                 className={`${width}x${height}` === i.size ? 'active size-item' : 'size-item'}
-                onClick={() => setSize(i.size)}
+                onClick={() => dispatchUpdateSize(i.size)}
                 key={i.size}
               >
                 {i.name}
@@ -94,4 +99,3 @@ export default (props: settingPropsType) => {
     </div>
   )
 }
-
